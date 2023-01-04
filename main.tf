@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "db" {
-    ami = "ami-032598fcc7e9d1c7a"
+    ami = ["copy ami"]
     instance_type = "t2.micro"
 
     tags = {
@@ -12,7 +12,7 @@ resource "aws_instance" "db" {
 }
 
 resource "aws_instance" "web" {
-    ami = "ami-032598fcc7e9d1c7a"
+    ami = ["copy ami"]
     instance_type = "t2.micro"
     security_groups = [aws_security_group.web_traffic.name]
     user_data = file("server-script.sh")
